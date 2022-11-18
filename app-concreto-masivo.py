@@ -46,26 +46,27 @@ if uploaded_file is not None:
     # Seleccionando las variables seleccionadas
     df = carga[["Cement", "Water", "Superplasticizer", "Age"]]
 
-    # Mostrando la barra de carga para la predicción
-    st.write("---")
-    st.write("Cargando la Predicción...")
-    loading = st.progress(0)
-    # cargando el Modelo
-    model = joblib.load(r'.\model\rf_regressor.pkl')
-    # Haciendo la Predicción
-    pred = model.predict(df)
+    if st.button("Predecir"):
+        # Mostrando la barra de carga para la predicción
+        st.write("---")
+        st.write("Cargando la Predicción...")
+        loading = st.progress(0)
+        # cargando el Modelo
+        model = joblib.load(r'.\model\rf_regressor.pkl')
+        # Haciendo la Predicción
+        pred = model.predict(df)
 
-    # Moviendo la barra de carga hasta que termine
-    for percent_complete in range(100):
-        time.sleep(0.01)
-        loading.progress(percent_complete + 1)
-    time.sleep(1.5)
+        # Moviendo la barra de carga hasta que termine
+        for percent_complete in range(100):
+            time.sleep(0.01)
+            loading.progress(percent_complete + 1)
+        time.sleep(1.5)
 
-    # Dandole formato al Df final
-    pred = pd.DataFrame(pred)
-    pred.rename(columns={0: 'Predicción_Strength'}, inplace=True)
-    df_final = pd.concat([carga, pred], axis=1)
+        # Dandole formato al Df final
+        pred = pd.DataFrame(pred)
+        pred.rename(columns={0: 'Predicción_Strength'}, inplace=True)
+        df_final = pd.concat([carga, pred], axis=1)
 
-    # Mostrando la Predicción
-    st.write("Predicción:")
-    st.write(df_final)
+        # Mostrando la Predicción
+        st.write("Predicción:")
+        st.write(df_final)
