@@ -1,1 +1,2 @@
-#
+# Proyecto Final
+Este repositorio contiene el proyecto final de la materia Aprendizaje Máquina. Contiene un reporte en formato .ipynb con la explicación, desarrollo y solución del problema a resolver, sobre la fuerza del cemento. Por ello se crearon varios modelos de regresión con variables predictoras como la escoria de horno, las cenizas, agua, superplastificante, agregado grueso y agregado fino que se utilizan para generar cemento. Además, el repositorio contiene el conjunto de datoa que se utilizó y un archivo con la aplicación para el deployment del proyecto. 
